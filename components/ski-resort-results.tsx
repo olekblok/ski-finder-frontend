@@ -54,22 +54,28 @@ export default function SkiResortResults() {
 
   const sortResorts = (key: SortKey, order: 'asc' | 'desc') => {
     const sorted = [...resorts].sort((a, b) => {
-      let aValue = a[key]
-      let bValue = b[key]
-
+      let aValue = a[key];
+      let bValue = b[key];
+  
+      // Handle specific cases for numeric values
       if (key === 'rating') {
-        aValue = parseFloat(a.rating.split(' ')[0])
-        bValue = parseFloat(b.rating.split(' ')[0])
-      }
-
-      if (order === 'asc') {
-        return aValue - bValue
+        aValue = parseFloat(a.rating.split(' ')[0]);
+        bValue = parseFloat(b.rating.split(' ')[0]);
       } else {
-        return bValue - aValue
+        // For numeric properties, ensure they are treated as numbers
+        aValue = Number(aValue); // Convert to number
+        bValue = Number(bValue); // Convert to number
       }
-    })
-    setSortedResorts(sorted)
+  
+      if (order === 'asc') {
+        return aValue - bValue; // Sort ascending
+      } else {
+        return bValue - aValue; // Sort descending
+      }
+    });
+    setSortedResorts(sorted);
   }
+  
 
   const toggleSortOrder = () => {
     setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')
