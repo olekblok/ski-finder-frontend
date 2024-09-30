@@ -56,7 +56,7 @@ export default function SkiResortResults() {
     const sorted = [...resorts].sort((a, b) => {
       let aValue = a[key];
       let bValue = b[key];
-  
+
       // Handle specific cases for numeric values
       if (key === 'rating') {
         aValue = parseFloat(a.rating.split(' ')[0]);
@@ -66,16 +66,11 @@ export default function SkiResortResults() {
         aValue = Number(aValue); // Convert to number
         bValue = Number(bValue); // Convert to number
       }
-  
-      if (order === 'asc') {
-        return aValue - bValue; // Sort ascending
-      } else {
-        return bValue - aValue; // Sort descending
-      }
+
+      return order === 'asc' ? aValue - bValue : bValue - aValue; // Sort based on order
     });
     setSortedResorts(sorted);
   }
-  
 
   const toggleSortOrder = () => {
     setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')
@@ -165,15 +160,15 @@ export default function SkiResortResults() {
                 <div className="space-y-2 mb-4">
                   <div>
                     <span className="text-sm">Blue: {resort.blue_slopes} km</span>
-                    <Progress value={(resort.blue_slopes / resort.total_slopes) * 100} className="h-2 bg-blue-100" indicatorClassName="bg-blue-600" />
+                    <Progress value={(resort.blue_slopes / resort.total_slopes) * 100} className="h-2 bg-blue-100" />
                   </div>
                   <div>
                     <span className="text-sm">Red: {resort.red_slopes} km</span>
-                    <Progress value={(resort.red_slopes / resort.total_slopes) *100} className="h-2 bg-red-100" indicatorClassName="bg-red-600" />
+                    <Progress value={(resort.red_slopes / resort.total_slopes) * 100} className="h-2 bg-red-100" />
                   </div>
                   <div>
                     <span className="text-sm">Black: {resort.black_slopes} km</span>
-                    <Progress value={(resort.black_slopes / resort.total_slopes) * 100} className="h-2 bg-gray-100" indicatorClassName="bg-gray-600" />
+                    <Progress value={(resort.black_slopes / resort.total_slopes) * 100} className="h-2 bg-gray-100" />
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-2 text-sm mb-4">
