@@ -11,7 +11,7 @@ import { LoadingOverlay } from './loading-overlay'
 import { MountainBackground } from './mountain-background'
 import { Snowflake } from 'lucide-react'
 
-const countries = ['Austria', 'Slovakia', 'Czech Republic', 'Slovenia', 'Poland', 'Lithuania', 'Latvia', 'Germany', 'Switzerland']
+const countries = ['Austria', 'Slovakia', 'Czech Republic', 'Slovenia', 'Poland', 'Lithuania', 'Latvia', 'Germany', 'Switzerland', 'Italy']
 
 export default function SkiResortFilter() {
   const router = useRouter()
