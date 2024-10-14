@@ -12,7 +12,7 @@ export async function POST(request: Request) {
   };
 
   // Fetch data from the Flask backend
-  const flaskResponse = await fetch('http://34.88.223.36:8080', requestOptions);
+  const flaskResponse = await fetch('http://127.0.0.1:5000', requestOptions);
 
   // Check if the request was successful
   if (!flaskResponse.ok) {
